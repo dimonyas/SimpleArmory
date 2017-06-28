@@ -17,6 +17,14 @@
             148069: true
         };
 
+        // needed so that we can use 'usemin' to replace *.json references to hashed versions
+        var jsonFiles = 
+        {
+            'pets': 'data/pets.json',
+            'battlepets': 'data/battlepets.json',
+            'mounts': 'data/mounts.json'
+        }
+
         //  cache results
         var parsedMounts;
         var parsedCompanions;
@@ -29,6 +37,7 @@
 
         return {
             getItems: function(jsonFile, characterProperty, collectedId) {
+
                 if (jsonFile === 'pets' && parsedCompanions) {
                     return $q.when(parsedCompanions);
                 } else if (jsonFile === 'battlepets' && parsedPets) {
@@ -44,7 +53,7 @@
                             'character':$routeParams.character
                         })
                     .then(function(character) {
-                        return $http.get('data/' + jsonFile + '.json', { cache: true, isArray:true })
+                        return $http.get(jsonFiles[jsonFile], { cache: true, isArray:true })
                             .then(function(data) {
                                 
                                 $log.log('Parsing ' + jsonFile + '.json...');
@@ -74,7 +83,7 @@
             // Build up lookup for items that character has
             angular.forEach(character[characterProperty].collected, function(item) {
                 collected[item[collectedId]] = item;
-                found[item[collectedId]] = false;               
+                found[item[collectedId]] = false;
             });
 
             // Fix any problems blizzard has introduced
@@ -263,7 +272,7 @@
                         $window.ga('send', 'event', 'MissingCollection', collId);
                         console.log('WARN: Found item "' + collId + '" from character but not in db.');
                     }
-                }               
+                }
             }
 
             // Add totals

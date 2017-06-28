@@ -7,16 +7,16 @@
         .directive('saReputationRow', ReputationRow);
 
     function ReputationRow() {
-    	return {
-        	controller: ReputationRowController,
-        	restrict: 'E',
-    		scope: {
-        		faction: '=', 
-      		},
-        	templateUrl: function () {
-                return 'views/reputationRow.html';    
+        return {
+            controller: ReputationRowController,
+            restrict: 'E',
+            scope: {
+                faction: '=', 
+            },
+            templateUrl: function () {
+                return 'views/reputationRow.html';
             }
-    	};
+        };
     }
 
     // Pixel widths of the different level types
@@ -50,5 +50,14 @@
         	// applies that percentage to the possible fixed width for the div
         	return (num / 100) * levelWidths[level] + 'px';
         };
+
+        $scope.shouldShow = function(show) {
+            // if we're at max, don't show the hover
+            if ($scope.faction.max === 0) {
+                $scope.show = false;
+            } else {
+                $scope.show = show;
+            }
+        }
     };
 })();

@@ -1,13 +1,16 @@
 # [SimpleArmory](http://simplearmory.com) <img src="https://github.com/kevinclement/SimpleArmory/raw/master/app/images/shield.png?raw=true" align="left" height="32" width="32" style="max-width:100%;align-vertical: center;vertical-align: center;line-height: 20px;margin-top: 15px;margin-right: 5px;">
-Simple Armory is a World of Warcraft armory site that presents your armory in a simple manor.
+World of Warcraft armory site that presents your armory in a simple manor.
 
 ======================
 
-This is the code used to build out [simplearmory.com](http://simplearmory.com) website.  
+This is the code used to build out [simplearmory.com](http://simplearmory.com) website.  Contributions welcome.
 
-Feel free to contribute to its development.
+[![Example armory for Marko@Proudmoore][2]][1]
 
-## Create App
+[1]: http://simplearmory.com/#/us/proudmoore/marko/
+[2]: screenshot.png (Example armory for Marko@Proudmoore)
+
+## Clone App
 
 ```shell
 git clone https://github.com/kevinclement/SimpleArmory.git SA
